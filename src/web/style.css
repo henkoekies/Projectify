@@ -1,0 +1,316 @@
+/* Theme and layout sizes */
+:root {
+  color-scheme: dark;
+
+  --background: #1e1f22;
+  --surface: #25262b;
+  --titlebar: #2b2d30;
+  --border: #383a42;
+
+  --text: #e5e5eb;
+  --muted: #a1a3b0;
+  --accent: #82aaff;
+  --accent-soft: #29364f;
+  --accent-border: #405779;
+  --accent-hover: #a3c0ff;
+
+  --titlebar-height: 40px;
+  --toolbar-height: 72px;
+  --page-padding: 24px;
+}
+
+/* Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: var(--background);
+  color: var(--text);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Native title-bar area */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 var(--titlebar-height);
+  min-width: 0;
+
+  padding-left: calc(env(titlebar-area-x, 0px) + 16px);
+  padding-right: calc(
+  100% - env(titlebar-area-x, 0px) -
+  env(titlebar-area-width, 100%)
+);
+
+  background: var(--titlebar);
+  border-bottom: 1px solid var(--border);
+
+  user-select: none;
+  -webkit-app-region: drag;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 22px;
+  height: 22px;
+
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.header h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.header button,
+.header input,
+.header select,
+.header textarea,
+.header a {
+  -webkit-app-region: no-drag;
+}
+
+/* Full-width fixed action bar */
+.actions {
+  position: fixed;
+  top: var(--titlebar-height);
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  height: var(--toolbar-height);
+  padding: 16px var(--page-padding);
+
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+
+  -webkit-app-region: no-drag;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition:
+    background-color 150ms,
+    border-color 150ms;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #14213b;
+}
+
+.button-primary:not(:disabled):hover {
+  background: var(--accent-hover);
+}
+
+.button-secondary {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.button-secondary:not(:disabled):hover {
+  background: #303138;
+  border-color: #646170;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Scrollable content */
+.projectList {
+  flex: 1;
+  min-height: 0;
+
+  /* Reserve the exact space occupied by the fixed toolbar. */
+  margin-top: var(--toolbar-height);
+
+  overflow: auto;
+  padding: var(--page-padding);
+  scrollbar-color: #50515c var(--background);
+}
+
+.content {
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+/* Project rows */
+.projectRows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.projectRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 20px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.project-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  height: 44px;
+
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.project-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-details h2 {
+  margin-bottom: 4px;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.project-path {
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.project-date {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* Preferences Button */
+.preferencesButton {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+
+  flex: 0 0 46px;
+  margin-left: auto;
+  padding: 0;
+
+  background: transparent;
+  color: #bfc1c8;
+  border: none;
+  border-radius: 0;
+
+  cursor: default;
+  -webkit-app-region: no-drag;
+
+  transition: background-color 100ms, color 100ms;
+}
+
+.preferencesButton svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.preferencesButton:hover {
+  background: rgb(255 255 255 / 9%);
+  color: #ffffff;
+}
+
+.preferencesButton:active {
+  background: rgb(255 255 255 / 6%);
+  color: #c8cad0;
+}
+
+.preferencesButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preferencesButton {
+    transition: none;
+  }
+}
+
+/* Smaller windows */
+@media (max-width: 600px) {
+  :root {
+    --page-padding: 16px;
+  }
+
+  .projectRow {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .project-date {
+    flex-basis: 100%;
+    padding-left: 56px;
+  }
+}

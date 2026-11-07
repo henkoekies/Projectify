@@ -1,0 +1,26 @@
+{
+  "name": "projectify",
+  "version": "1.0.1",
+  "description": "A project management / creator.",
+  "keywords": [
+    "None"
+  ],
+  "homepage": "https://github.com/henkoekies/Projectify#readme",
+  "bugs": {
+    "url": "https://github.com/henkoekies/Projectify/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henkoekies/Projectify.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Henry R. Koekemoer",
+  "type": "commonjs",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^45.2.2"
+  }
+}

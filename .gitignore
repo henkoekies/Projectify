@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Generated Electron packages and build output
+/dist/
+/out/
+/release/
+
+# Caches and test output
+.cache/
+coverage/
+.nyc_output/
+
+# Logs
+*.log
+
+# Local environment values (keep example files)
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
